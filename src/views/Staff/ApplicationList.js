@@ -182,6 +182,7 @@ const StaffApplicationsList = () => {
                   <th scope="col">Category</th>
                   <th scope="col">Submitted On</th>
                   <th scope="col">Status</th>
+                  <th scope="col">Priority Score</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
@@ -199,6 +200,20 @@ const StaffApplicationsList = () => {
                       <td>{app.category_name || 'N/A'}</td>
                       <td>{formatDate(app.submission_date)}</td>
                       <td>{getStatusBadge(app.application_status)}</td>
+                      
+                      {/* --- NEW COLUMN DATA --- */}
+                      <td>
+                        {app.total_priority_score !== null && app.total_priority_score !== undefined ? (
+                          <Badge 
+                          color={app.total_priority_score >= 70 ? 'danger' : 'info'} 
+                        pill
+                        >
+                        {app.total_priority_score}
+                        </Badge>
+                        ) : (
+                        <Badge color="secondary" pill>N/A</Badge>
+                      )}
+                    </td>
                       <td>
                         <Button
                           color="primary"

@@ -7,6 +7,7 @@ import {
   Table // <-- 1. IMPORT TABLE
 } from 'reactstrap';
 import { getStaffApplicationDetail } from '../../apicall';
+import ScoringEngineWidget from 'components/scoringEngineWidget';
 
 // Define your backend URL for constructing download links
 const BACKEND_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
@@ -134,6 +135,7 @@ const StaffApplicationDetail = () => {
       <Container className="mt-5" fluid>
         <Row className="justify-content-center">
           <Col lg="10" md="12">
+          <ScoringEngineWidget scoreData={application.scoreData} />
             {/* Main Application Card */}
             <Card className="shadow">
               <CardHeader className="bg-white border-0">
